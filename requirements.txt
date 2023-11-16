@@ -1,2 +1,2 @@
 youtube-transcript-api==0.6.1
-youtube3==1.2.5
+google-api-python-client
