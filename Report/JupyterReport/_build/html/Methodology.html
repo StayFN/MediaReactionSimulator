@@ -379,6 +379,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-1">Proposition 2.1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-2">Proposition 2.2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben">Used Software Packages &amp; Functions (TODO sollen wir das hier wirklich auch noch beschreiben?)</a></li>
 </ul>
             </nav>
         </div>
@@ -434,6 +435,30 @@ You should rate between 1 to 5 how depressed, tense, sorry, dissatisfied, and an
 </section>
 <section id="proposition-2-2">
 <span id="id5"></span><h2>Proposition 2.2<a class="headerlink" href="#proposition-2-2" title="Permalink to this heading">#</a></h2>
+<p>Proposition 2.2 suggests that prioritization of short-term mood regulation versus long-term goals is affected by self-control<span id="id6">[<a class="reference internal" href="Bibliography.html#id2" title="Leonard Reinecke and Adrian Meier. Media entertainment as guilty pleasure? The Oxford handbook of entertainment theory, pages 205, 2021.">RM21</a>]</span>. Several studies are referenced in the initial paper which allow the derivation of this proposition. In the paragraphs below, the experiments are described as well as the the methods we used to reproduce the results using LLMs.</p>
+<p>Researchers <span id="id7">[<a class="reference internal" href="Bibliography.html#id3" title="Benjamin K Johnson, David R Ewoldsen, and Michael D Slater. Self-control depletion and narrative: testing a prediction of the tebots model. Media Psychology, 18(2):196–220, 2015.">JES15</a>]</span> have shown that individuals with reduced SSC experience higher levels of enjoyment to the narrative of a short-story. The authors suggest that participants with depleted SSC increase their goal-conduciveness of short-term mood regulation goals to experience higher levels of entertainment. In the experiment, participants were prepared to possess different levels of SSC before exposing them to the narrative of a short-story. Afterwards, the participants were asked to rate their experience by providing a 1-5 rating for following attributes: enjoyment, fun, moving, impression, suspense, transportation, and identification. To replicate this experiment, we collected 100 YouTube Shorts by employing the search term <code class="docutils literal notranslate"><span class="pre">english</span> <span class="pre">short</span> <span class="pre">story</span></code>. Following the methodology described in <a class="reference internal" href="Introduction.html#methodological-approach"><span class="std std-ref">Methodological Approach</span></a>, the LLM was prepared to represent an individual with varying levels of SSC and tasked with generating the ratings as follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>You are watching a youtube short. The YouTube short is described as follows:
+
+&lt;YouTube Short description of LLM&gt;
+
+You should rate between 1 (very slightly/not at all) to 5 (extremely) how much enjoyment, fun, moving, impression, suspense, transportation, identification you felt. Output the seven fields in JSON only. Your answer must not include any further text or explanations.
+</pre></div>
+</div>
+<p>Below, an exemplary JSON output is illustrated:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;enjoyment&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;fun&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;moving&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s2">&quot;impression&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s2">&quot;suspense&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;transportation&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;identification&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben">
+<h2>Used Software Packages &amp; Functions (TODO sollen wir das hier wirklich auch noch beschreiben?)<a class="headerlink" href="#used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -503,6 +528,7 @@ You should rate between 1 to 5 how depressed, tense, sorry, dissatisfied, and an
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-1">Proposition 2.1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-2">Proposition 2.2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben">Used Software Packages &amp; Functions (TODO sollen wir das hier wirklich auch noch beschreiben?)</a></li>
 </ul>
   </nav></div>
 

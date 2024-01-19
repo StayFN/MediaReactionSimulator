@@ -48,4 +48,31 @@ An exemplary JSON output is illustrated below:
 (proposition-2-2)=
 ## Proposition 2.2
 
+Proposition 2.2 suggests that prioritization of short-term mood regulation versus long-term goals is affected by self-control{cite}`reinecke2021media`. Several studies are referenced in the initial paper which allow the derivation of this proposition. In the paragraphs below, the experiments are described as well as the the methods we used to reproduce the results using LLMs. 
+
+Researchers {cite}`johnson2015self` have shown that individuals with reduced SSC experience higher levels of enjoyment to the narrative of a short-story. The authors suggest that participants with depleted SSC increase their goal-conduciveness of short-term mood regulation goals to experience higher levels of entertainment. In the experiment, participants were prepared to possess different levels of SSC before exposing them to the narrative of a short-story. Afterwards, the participants were asked to rate their experience by providing a 1-5 rating for following attributes: enjoyment, fun, moving, impression, suspense, transportation, and identification. To replicate this experiment, we collected 100 YouTube Shorts by employing the search term `english short story`. Following the methodology described in [](methodological-approach), the LLM was prepared to represent an individual with varying levels of SSC and tasked with generating the ratings as follows:
+
+```text
+You are watching a youtube short. The YouTube short is described as follows:
+
+<YouTube Short description of LLM>
+
+You should rate between 1 (very slightly/not at all) to 5 (extremely) how much enjoyment, fun, moving, impression, suspense, transportation, identification you felt. Output the seven fields in JSON only. Your answer must not include any further text or explanations.
+```
+
+Below, an exemplary JSON output is illustrated:
+```
+{
+    "enjoyment": 3,
+    "fun": 2,
+    "moving": 4,
+    "impression": 5,
+    "suspense": 1,
+    "transportation": 3,
+    "identification": 2
+}
+```
+
+## Used Software Packages & Functions (TODO sollen wir das hier wirklich auch noch beschreiben?)
+
 [^1]: <https://huggingface.co/chat/>
