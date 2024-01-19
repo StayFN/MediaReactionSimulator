@@ -1,13 +1,14 @@
+(method)=
 # Method
 
-This chapter describes the generation of the data sets and the analysis logic of our research. As described in [](methodological-approach), [](proposition-2-1) and [](proposition-2-2) of the AMUSE model were simulated using LLMs.
+This chapter describes the generation of the data sets and the analysis logic of our research. As described in [](methodological-approach), [](proposition-2-1-method) and [](proposition-2-2-method) of the AMUSE model were simulated using LLMs.
 
-(proposition-2-1)=
+(proposition-2-1-method)=
 ## Proposition 2.1
 
 Proposition 2.1 suggests that individuals with high SSC exhibit an enhanced ability of downgrading their emotional responses to external stimuli compared to those with low SSC{cite}`reinecke2021media`. The initial paper referenced several experiments which concluded in this proposition. The following paragraphs describe the conducted experiments and how they were reproduced in our research using LLMs. 
 
-Researchers {cite}`muraven1998self` have demonstrated that individuals with low SSC produce stronger affective reactions to humorous media content relative to those with high SSC. In their study, participants were primed to either posess high or low SSC, exposing them to comedic videos while instructing them to restrain their emotional expressions during facial recording. The number of smiles and laughs was counted by raters who also provided a general rating of the participant's success in controlling emotions. To replicate this experiment utilizing LLMs, we leveraged the search terms `#skit #funny` and `#standupcomedy` to retrieve YouTube Shorts. Eighty-nine video descriptions were obtained, serving as input for our LLM simulation. We employed the [](methodological-approach) outlined earlier to prepare the LLM and requested ratings from it for each designated individual. Following promt was used to replicate the described experiment:
+Researchers {cite}`muraven1998self` have demonstrated that individuals with low SSC produce stronger affective reactions to humorous media content relative to those with high SSC. In their study, participants were primed to either possess high or low SSC, exposing them to comedic videos while instructing them to restrain their emotional expressions during facial recording. The number of smiles and laughs was counted by raters who also provided a general rating of the participant's success in controlling emotions. To replicate this experiment utilizing LLMs, we leveraged the search terms `#skit #funny` and `#standupcomedy` to retrieve YouTube Shorts. Eighty-nine video descriptions were obtained, serving as input for our LLM simulation. We employed the [](methodological-approach) outlined earlier to prepare the LLM and requested ratings from it for each designated individual. Following promt was used to replicate the described experiment:
 ```text
 You are watching a YouTube short and while you are watching the video, you try to hide your emotions to outside people. The YouTube short is described as follows:
 
@@ -45,7 +46,7 @@ An exemplary JSON output is illustrated below:
 }
 ```
 
-(proposition-2-2)=
+(proposition-2-2-method)=
 ## Proposition 2.2
 
 Proposition 2.2 suggests that prioritization of short-term mood regulation versus long-term goals is affected by self-control{cite}`reinecke2021media`. Several studies are referenced in the initial paper which allow the derivation of this proposition. In the paragraphs below, the experiments are described as well as the the methods we used to reproduce the results using LLMs. 

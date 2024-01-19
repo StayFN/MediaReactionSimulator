@@ -354,7 +354,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -370,6 +372,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-1">Proposition 2.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-2">Proposition 2.2</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -381,6 +392,27 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="results">
 <h1>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h1>
+<p>To verify whether LLMs can be used to simulate experiments in social science, several experiments were performed trying to replicate studies referenced in the initial research paper of the AMUSE model <span id="id1">[<a class="reference internal" href="Bibliography.html#id2" title="Leonard Reinecke and Adrian Meier. Media entertainment as guilty pleasure? The Oxford handbook of entertainment theory, pages 205, 2021.">RM21</a>]</span>. This section describes the results of the methods pointed out in <a class="reference internal" href="Introduction.html#methodological-approach"><span class="std std-ref">Methodological Approach</span></a> and <a class="reference internal" href="Methodology.html#method"><span class="std std-ref">Method</span></a>. The results are structured in <a class="reference internal" href="#proposition-2-1-result"><span class="std std-ref">Proposition 2.1</span></a> and <a class="reference internal" href="#proposition-2-2-result"><span class="std std-ref">Proposition 2.2</span></a>.</p>
+<section id="proposition-2-1">
+<span id="proposition-2-1-result"></span><h2>Proposition 2.1<a class="headerlink" href="#proposition-2-1" title="Permalink to this heading">#</a></h2>
+<p>In our research we were able to reproduce the results of the experiments described in <span id="id2">[<a class="reference internal" href="Bibliography.html#id4" title="Mark Muraven, Dianne M Tice, and Roy F Baumeister. Self-control as a limited resource: regulatory depletion patterns. Journal of personality and social psychology, 74(3):774, 1998.">MTB98</a>]</span> by using LLMs. Figure <a class="reference internal" href="#funny-ssc-characteristics"><span class="std std-ref">Humorous Videos (SSC Characteristics)</span></a> shows our simulation results of the experiment by presenting the average number of laughs and smiles as well as the overall amusement rating. The results were produced by describing the characteristics of a person with high or low SSC to the LLM before asking it to calculate the results. It is shown that the average number of laughs and smiles as well as the average overall amusement rating differ significantly depending on the SSC level. While the average number of smiles for individuals with low SSC were 1.94 per Video, individuals with high SSC smiled on average 0.79 times per video which is 60.3% less. The average number of laughs per video is 3.18 for individuals with low SSC, while individuals with high SSC laughed only 2.1 times per video on average which is 33.96% less. Finally, the average amusement rating for persons with low SSC is represented with 3.11 while persons with high SSC have an average amusement rating of 2.22 which is 28.6% less.</p>
+<figure class="align-default" id="funny-ssc-characteristics">
+<img alt="_images/funny_ssc_characteristics.png" src="_images/funny_ssc_characteristics.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Humorous Videos (SSC Characteristics)</span><a class="headerlink" href="#funny-ssc-characteristics" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Figure <a class="reference internal" href="#funny-ssc-defined"><span class="std std-ref">Humorous Videos (SSC Defined)</span></a> shows the results of the same experiment simulation but this time, no characteristics were described to the LLM. Instead it was simply defined whether the participant has high or low SSC levels. The Figure shows that the results are less significant with the average number of smiles being 0.75 for individuals with low SSC and 0.62 for individuals with high SSC which is 17.3% less. The average number of laughs is 2.38 for individuals with low SSC while it lies at 1.99 for individuals with high SSC which is 16.39% less. The average amusement rating however was with 2.13 higher for individuals with high SSC than for individuals with low SSC which had an average amusement rating of 2.07. This is 2.9% more and does not correspond with the results of the study described in <span id="id3">[<a class="reference internal" href="Bibliography.html#id4" title="Mark Muraven, Dianne M Tice, and Roy F Baumeister. Self-control as a limited resource: regulatory depletion patterns. Journal of personality and social psychology, 74(3):774, 1998.">MTB98</a>]</span>.</p>
+<figure class="align-default" id="funny-ssc-defined">
+<img alt="_images/funny_ssc_defined.png" src="_images/funny_ssc_defined.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Humorous Videos (SSC Defined)</span><a class="headerlink" href="#funny-ssc-defined" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="proposition-2-2">
+<span id="proposition-2-2-result"></span><h2>Proposition 2.2<a class="headerlink" href="#proposition-2-2" title="Permalink to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -438,7 +470,21 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-1">Proposition 2.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-2">Proposition 2.2</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
