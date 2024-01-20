@@ -47,3 +47,23 @@ In addition, the results of the two experimental simulations indicate that provi
 
 (proposition-2-2-result)=
 ## Proposition 2.2
+
+In our study, we replicated an experiment previously described in {cite}`johnson2015self` by utilizing LLMs, and conducted a series of simulations. The initial run of the simulation yielded results that are illustrated in Figure [](short-story-ssc-characteristics), which presents the outcomes when the LLM was provided with descriptions of high or low SSC individual characteristics prior to evaluation requests. Our findings reveal a minor discrepancy in the experienced emotions, with high SSC individuals experiencing slightly more intense emotions on average (enjoyment: 3.38, fun: 3.23, moving 2.24, impression: 3.54, suspense: 1.82, transportation: 2.4, identification: 2.37) compared to those with low SSC (enjoyment: 3.18, fun: 3.56, moving 1.93, impression: 3.24, suspense: 1.59, transportation: 2.17, identification: 2.39). These results diverge from the original experiment's findings {cite}`schmeichel2007attention`, since our simulation showed that low SSC individuals experienced emotions 5.9% less intensely than their high SSC counterparts.
+
+```{figure} ./images/short-story_ssc_characteristics.png
+---
+name: short-story-ssc-characteristics
+---
+Short-Story Videos (SSC Characteristics)
+```
+
+Figure [](short-story-ssc-defined) showcases the outcomes of the second simulation run, where the LLM was not provided with any specific characteristics of high or low SSC individuals. Instead, we merely distinguished between individuals possessing high or low SSC prior to querying the LLM for its responses. Notably, the emotional intensities varied more significantly between high and low SSC individuals in this run compared to the initial simulation. Specifically, high SSC individuals reported stronger experiences (enjoyment: 3.44, fun: 3.25, moving 2.27, impression: 3.52, suspense: 1.89, transportation: 2.45, identification: 2.51) than their low SSC counterparts (enjoyment: 2.96, fun: 2.85, moving 1.63, impression: 2.56, suspense: 1.51, transportation: 1.75, identification: 2.0).  On average low SSC individuals experienced emotions 21.53% less than high SSC individuals, contradicting the findings presented in the original experiment's paper {cite}`schmeichel2007attention`.
+
+```{figure} ./images/short-story_ssc_defined.png
+---
+name: short-story-ssc-defined
+---
+Short-Story Videos (SSC Defined)
+```
+
+The findings from both simulation runs contradict the original research by {cite}`schmeichel2007attention`, which suggests that individuals with high SSC tend to experience less intense emotions compared to those with low SSC. Instead, our simulations yielded that low SSC individuals experience weaker emotions, with the first run (see Figure [](short-story-ssc-characteristics)) showing an average reduction of 5.9% in emotional intensity compared to high SSC individuals, while the second run (see Figure [](short-story-ssc-defined)) showed a larger discrepancy of 21.53%. Notably, these patterns were reversed when examining the simulation runs for [](proposition-2-1-result).
