@@ -379,7 +379,14 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-1">Proposition 2.1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-2">Proposition 2.2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben">Used Software Packages &amp; Functions (TODO sollen wir das hier wirklich auch noch beschreiben?)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben">Used Software Packages &amp; Functions (TODO sollen wir das hier wirklich auch noch beschreiben?)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data Collection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Proposition 2.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aggression-provocation">Aggression / Provocation</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -473,6 +480,86 @@ You should rate between 1 (very slightly/not at all) to 5 (extremely) how much e
 </section>
 <section id="used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben">
 <h2>Used Software Packages &amp; Functions (TODO sollen wir das hier wirklich auch noch beschreiben?)<a class="headerlink" href="#used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben" title="Permalink to this heading">#</a></h2>
+<section id="data-collection">
+<h3>Data Collection<a class="headerlink" href="#data-collection" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="id8">
+<h3>Proposition 2.1<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<section id="aggression-provocation">
+<h4>Aggression / Provocation<a class="headerlink" href="#aggression-provocation" title="Permalink to this heading">#</a></h4>
+<p>We used regex to match the JSON, since the columns sometimes included additional text, despite our efforts in the prompt to prevent this.
+Then we used standard pandas functionality to extract the integers out of the JSON. After that matplotlib was utilized to plot the boxplots
+and calculate everything associated with it (mean, IQR, …)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;files_for_python_code/Report_Shorts_with_summary_stefan_provocation_experimentResults.csv&quot;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="k">def</span> <span class="nf">extract_json</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Find the first JSON-like structure in the row</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;{.*?}&#39;</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+            <span class="n">json_str</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_str</span><span class="p">)</span>  
+    <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="c1"># Apply the function to all Json Columns</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;low ssc defined&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;low ssc defined&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">extract_json</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;high ssc defined&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;high ssc defined&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">extract_json</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;low ssc characteristics&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;low ssc characteristics&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">extract_json</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;high ssc characteristics&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;high ssc characteristics&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">extract_json</span><span class="p">)</span> 
+
+<span class="c1">#Extract the aggression value from the JSON</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;low ssc characteristics&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;low ssc characteristics&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;aggression&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;high ssc characteristics&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;high ssc characteristics&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;aggression&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;low ssc defined&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;low ssc defined&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;aggression&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;high ssc defined&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;high ssc defined&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;aggression&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+<span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">columns_to_plot</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;low ssc characteristics&#39;</span><span class="p">,</span> <span class="s1">&#39;high ssc characteristics&#39;</span><span class="p">,</span> <span class="s1">&#39;low ssc defined&#39;</span><span class="p">,</span> <span class="s1">&#39;high ssc defined&#39;</span><span class="p">]</span>
+
+<span class="n">data_to_plot</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">columns_to_plot</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>  
+<span class="n">bp</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data_to_plot</span><span class="p">,</span> <span class="n">patch_artist</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">notch</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">medianprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;linewidth&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+
+<span class="c1"># Colors and labels for the legend</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">,</span> <span class="s1">&#39;seagreen&#39;</span><span class="p">,</span> <span class="s1">&#39;palegreen&#39;</span><span class="p">,</span> <span class="s1">&#39;mediumseagreen&#39;</span><span class="p">]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Low SSC Char.&#39;</span><span class="p">,</span> <span class="s1">&#39;High SSC Char.&#39;</span><span class="p">,</span> <span class="s1">&#39;Low SSC Def.&#39;</span><span class="p">,</span> <span class="s1">&#39;High SSC Def.&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">patch</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bp</span><span class="p">[</span><span class="s1">&#39;boxes&#39;</span><span class="p">],</span> <span class="n">colors</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">patch</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;Aggression </span><span class="se">\n</span><span class="s1"> Low SSC Char.&#39;</span><span class="p">,</span> <span class="s1">&#39;Aggression </span><span class="se">\n</span><span class="s1"> High SSC Char.&#39;</span><span class="p">,</span> <span class="s1">&#39;Aggression </span><span class="se">\n</span><span class="s1"> Low SSC Def.&#39;</span><span class="p">,</span> <span class="s1">&#39;Aggression </span><span class="se">\n</span><span class="s1"> High SSC Def.&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Aggression Scores&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Aggression Score Distribution by Category&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3c88bf43c8b86ff5ede03034064918fbf22b05ddfc61ccd9d73bbfe86a23d3b0.png" src="_images/3c88bf43c8b86ff5ede03034064918fbf22b05ddfc61ccd9d73bbfe86a23d3b0.png" />
+</div>
+</div>
+</section>
+</section>
 </section>
 </section>
 
@@ -542,7 +629,14 @@ You should rate between 1 (very slightly/not at all) to 5 (extremely) how much e
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-1">Proposition 2.1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-2">Proposition 2.2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben">Used Software Packages &amp; Functions (TODO sollen wir das hier wirklich auch noch beschreiben?)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben">Used Software Packages &amp; Functions (TODO sollen wir das hier wirklich auch noch beschreiben?)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data Collection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Proposition 2.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aggression-provocation">Aggression / Provocation</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

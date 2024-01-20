@@ -1,3 +1,14 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
 (method)=
 # Method
 
@@ -92,5 +103,72 @@ Below, an exemplary JSON output is illustrated:
 ```
 
 ## Used Software Packages & Functions (TODO sollen wir das hier wirklich auch noch beschreiben?)
+### Data Collection
+### Proposition 2.1 
 
+#### Aggression / Provocation 
+We used regex to match the JSON, since the columns sometimes included additional text, despite our efforts in the prompt to prevent this.
+Then we used standard pandas functionality to extract the integers out of the JSON. After that matplotlib was utilized to plot the boxplots
+and calculate everything associated with it (mean, IQR, ...)
+```{code-cell} python
+import pandas as pd
+df = pd.read_csv("files_for_python_code/Report_Shorts_with_summary_stefan_provocation_experimentResults.csv")
+
+import json
+import re
+def extract_json(row):
+    try:
+        # Find the first JSON-like structure in the row
+        match = re.search(r'{.*?}', row)
+        if match:
+            json_str = match.group()
+            return json.loads(json_str)  
+    except json.JSONDecodeError:
+        return None
+    return None
+
+# Apply the function to all Json Columns
+df['low ssc defined'] = df['low ssc defined'].apply(extract_json)
+df['high ssc defined'] = df['high ssc defined'].apply(extract_json)
+df['low ssc characteristics'] = df['low ssc characteristics'].apply(extract_json)
+df['high ssc characteristics'] = df['high ssc characteristics'].apply(extract_json) 
+
+#Extract the aggression value from the JSON
+df['low ssc characteristics'] = df['low ssc characteristics'].apply(
+    lambda x: x.get('aggression', None) if isinstance(x, dict) else None
+)
+df['high ssc characteristics'] = df['high ssc characteristics'].apply(
+    lambda x: x.get('aggression', None) if isinstance(x, dict) else None
+)
+df['low ssc defined'] = df['low ssc defined'].apply(
+    lambda x: x.get('aggression', None) if isinstance(x, dict) else None
+)
+df['high ssc defined'] = df['high ssc defined'].apply(
+    lambda x: x.get('aggression', None) if isinstance(x, dict) else None
+)
+
+import matplotlib.pyplot as plt
+
+columns_to_plot = ['low ssc characteristics', 'high ssc characteristics', 'low ssc defined', 'high ssc defined']
+
+data_to_plot = [df[col].dropna() for col in columns_to_plot]
+fig, ax = plt.subplots(figsize=(12, 8))  
+bp = ax.boxplot(data_to_plot, patch_artist=True, notch=True, medianprops={'linewidth': 2})
+
+# Colors and labels for the legend
+colors = ['lightseagreen', 'seagreen', 'palegreen', 'mediumseagreen']
+labels = ['Low SSC Char.', 'High SSC Char.', 'Low SSC Def.', 'High SSC Def.']
+
+for patch, color, label in zip(bp['boxes'], colors, labels):
+    patch.set_facecolor(color)
+    patch.set_label(label)
+
+ax.legend(loc='upper right')
+
+ax.set_xticklabels(['Aggression \n Low SSC Char.', 'Aggression \n High SSC Char.', 'Aggression \n Low SSC Def.', 'Aggression \n High SSC Def.'])
+ax.set_ylabel('Aggression Scores')
+ax.set_title('Aggression Score Distribution by Category')
+
+plt.show()
+```
 [^1]: <https://huggingface.co/chat/>
