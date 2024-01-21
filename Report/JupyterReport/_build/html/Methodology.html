@@ -379,10 +379,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-1">Proposition 2.1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-2">Proposition 2.2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben">Used Software Packages &amp; Functions (TODO sollen wir das hier wirklich auch noch beschreiben?)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#used-software-packages-functions">Used Software Packages &amp; Functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data Collection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Proposition 2.1</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aggression-provocation">Aggression / Provocation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis">Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-funny-humorous">Example: Funny / Humorous</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-aggression-provocation">Example: Aggression / Provocation</a></li>
 </ul>
 </li>
 </ul>
@@ -439,7 +440,7 @@ You should rate between 1 to 5 how depressed, tense, sorry, dissatisfied, and an
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Stucke &amp; Baumeister<span id="id5">[<a class="reference internal" href="Bibliography.html#id6" title="Tanja S. Stucke and Roy F. Baumeister. Ego depletion and aggressive behavior: Is the inhibition of aggression a limited resource? European Journal of Social Psychology, 36(1):1–13, 2006. doi:10.1002/ejsp.285.">SB06</a>]</span> investigate the relationship between SSC and aggressive behaviour. In three experiments, the they demonstrated, that individuals with high SSC, whether by resisting tempting food, concentrating on a boring film, or unrelated acts of self-regulation, tend to exhibit increased aggression when faced with subsequent challenges or insults. The Researchers measured the aggression indirectly on a 9 point scale utilizing proxies like the evaluation of the experimenter. In order to replicate those results the LLM was confronted with 47 provocative Youtube Shorts obtained with the Search Term <code class="docutils literal notranslate"><span class="pre">Provocation</span></code> and asked to rate their emotional response to the provocative content. The exact prompt (excluding the SSC definitions) was constructed like this:</p>
+<p>Stucke &amp; Baumeister<span id="id5">[<a class="reference internal" href="Bibliography.html#id6" title="Tanja S. Stucke and Roy F. Baumeister. Ego depletion and aggressive behavior: Is the inhibition of aggression a limited resource? European Journal of Social Psychology, 36(1):1–13, 2006. doi:10.1002/ejsp.285.">SB06</a>]</span> investigate the relationship between SSC and aggressive behavior. In three experiments, the they demonstrated, that individuals with high SSC, whether by resisting tempting food, concentrating on a boring film, or unrelated acts of self-regulation, tend to exhibit increased aggression when faced with subsequent challenges or insults. The Researchers measured the aggression indirectly on a 9 point scale utilizing proxies like the evaluation of the experimenter. In order to replicate those results the LLM was confronted with 47 provocative Youtube Shorts obtained with the Search Term <code class="docutils literal notranslate"><span class="pre">Provocation</span></code> and asked to rate their emotional response to the provocative content. The exact prompt (excluding the SSC definitions) was constructed like this:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>You are watching a YouTube short and while you are watching the video, you try to hide your emotions to outside people. The YouTube short is described as follows:
 
 &lt;YouTube Short description of LLM&gt;
@@ -478,15 +479,232 @@ You should rate between 1 (very slightly/not at all) to 5 (extremely) how much e
 </pre></div>
 </div>
 </section>
-<section id="used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben">
-<h2>Used Software Packages &amp; Functions (TODO sollen wir das hier wirklich auch noch beschreiben?)<a class="headerlink" href="#used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben" title="Permalink to this heading">#</a></h2>
+<section id="used-software-packages-functions">
+<h2>Used Software Packages &amp; Functions<a class="headerlink" href="#used-software-packages-functions" title="Permalink to this heading">#</a></h2>
+<p>This chapter gives insight into the code that was used to collect the datasets and to analyze the data. The following code is an excerpt of the total code that was produced and provides an exemplary insight into the logic of the simulation.</p>
 <section id="data-collection">
-<h3>Data Collection<a class="headerlink" href="#data-collection" title="Permalink to this heading">#</a></h3>
+<span id="id8"></span><h3>Data Collection<a class="headerlink" href="#data-collection" title="Permalink to this heading">#</a></h3>
+<p>For extracting the YouTube Shorts, a script was created that queries the YouTube API. Since this script is very large, it is not included into this paper. However, it can be found in our repository<a class="footnote-reference brackets" href="#id13" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. Our main dependencies used were <code class="docutils literal notranslate"><span class="pre">hugchat</span></code><a class="footnote-reference brackets" href="#id14" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, <code class="docutils literal notranslate"><span class="pre">google-api-python-client</span></code><a class="footnote-reference brackets" href="#id15" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>, and <code class="docutils literal notranslate"><span class="pre">youtube-transcript-api</span></code><a class="footnote-reference brackets" href="#id16" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.</p>
+<p>For simulating the experiments, the code below was used. Functions like <code class="docutils literal notranslate"><span class="pre">st_provocation_low_ssc_characteristics</span></code> and <code class="docutils literal notranslate"><span class="pre">st_funny_low_ssc_characteristics</span></code> returned the promt text described in <a class="reference internal" href="#proposition-2-1-method"><span class="std std-ref">Proposition 2.1</span></a> and <a class="reference internal" href="#proposition-2-2-method"><span class="std std-ref">Proposition 2.2</span></a>. By calling the functions <code class="docutils literal notranslate"><span class="pre">query_st_funny</span></code> and <code class="docutils literal notranslate"><span class="pre">query_st_provocation</span></code>, the data collection process is triggered which queries <em>HuggingChat</em> for every short in batches of 10.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">hugchat</span> <span class="kn">import</span> <span class="n">hugchat</span>
+<span class="kn">from</span> <span class="nn">hugchat.login</span> <span class="kn">import</span> <span class="n">Login</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="c1"># credentials</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;client_secrets.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">secrets</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="c1"># Set up the API key</span>
+<span class="n">login</span> <span class="o">=</span> <span class="n">secrets</span><span class="p">[</span><span class="s1">&#39;huggingLogin&#39;</span><span class="p">]</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">secrets</span><span class="p">[</span><span class="s1">&#39;huggingPassword&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_llm_descriptions</span><span class="p">(</span><span class="n">df_shorts</span><span class="p">,</span> <span class="n">output_csv</span><span class="p">):</span>
+
+    <span class="c1"># Process the DataFrame in batches of 20 and write to the CSV file</span>
+    <span class="n">process_in_batches</span><span class="p">(</span><span class="n">df_shorts</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">output_csv</span><span class="p">,</span> <span class="n">chatbot</span><span class="p">)</span>
+    
+    <span class="k">return</span>
+
+<span class="k">def</span> <span class="nf">get_chatbot_summary</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="n">Login</span><span class="p">(</span><span class="n">login</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+    <span class="n">cookies</span> <span class="o">=</span> <span class="n">sign</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+
+    <span class="c1"># Save cookies to the local directory</span>
+    <span class="n">cookie_path_dir</span> <span class="o">=</span> <span class="s2">&quot;./cookies_snapshot&quot;</span>
+    <span class="n">sign</span><span class="o">.</span><span class="n">saveCookiesToDir</span><span class="p">(</span><span class="n">cookie_path_dir</span><span class="p">)</span>
+
+    <span class="n">chatbot</span> <span class="o">=</span> <span class="n">hugchat</span><span class="o">.</span><span class="n">ChatBot</span><span class="p">(</span><span class="n">cookies</span><span class="o">=</span><span class="n">cookies</span><span class="o">.</span><span class="n">get_dict</span><span class="p">())</span>  <span class="c1"># or cookie_path=&quot;usercookies/&lt;email&gt;.json&quot;</span>
+    <span class="c1">#Cast to String for regex, since query returns Message object</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">low_ssc_characteristics</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">chatbot</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;low ssc characteristics st&#39;</span><span class="p">]))</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">high_ssc_characteristics</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">chatbot</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;high ssc characteristics st&#39;</span><span class="p">]))</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">low_ssc_defined</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">chatbot</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;low ssc defined st&#39;</span><span class="p">]))</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">high_ssc_defined</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">chatbot</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;high ssc defined st&#39;</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">low_ssc_characteristics</span><span class="p">,</span> <span class="n">high_ssc_characteristics</span><span class="p">,</span> <span class="n">low_ssc_defined</span><span class="p">,</span> <span class="n">high_ssc_defined</span>
+
+<span class="c1"># Process the DataFrame in batches and update the DataFrame</span>
+<span class="k">def</span> <span class="nf">process_in_batches</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">output_csv</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataframe</span><span class="p">),</span> <span class="n">batch_size</span><span class="p">):</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="n">batch_size</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataframe</span><span class="p">))</span>
+        <span class="n">batch</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+
+        <span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">batch</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Processing Batch </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Process each row and update the DataFrame</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">batch</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+                    <span class="n">dataframe</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;low ssc characteristics&#39;</span><span class="p">],</span><span class="n">dataframe</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;high ssc characteristics&#39;</span><span class="p">],</span><span class="n">dataframe</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;low ssc defined&#39;</span><span class="p">],</span><span class="n">dataframe</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;high ssc defined&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_chatbot_summary</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                    <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Update the batch progress bar</span>
+
+                <span class="c1"># Overwrite the CSV file with the current state of the DataFrame</span>
+                <span class="n">dataframe</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_csv</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Batch </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2"> processed successfully&quot;</span><span class="p">)</span>
+            
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error processing batch </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>  <span class="c1"># Sleep timer for rate limiting</span>
+                <span class="n">process_in_batches</span><span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">start</span><span class="p">:],</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">output_csv</span><span class="p">)</span>  <span class="c1"># Restart from the current batch</span>
+                <span class="k">break</span>
+
+<span class="k">def</span> <span class="nf">query_st_funny</span><span class="p">():</span>
+    <span class="c1"># input</span>
+    <span class="n">YOUTUBE_SHORTS_WITH_CHATBOT_SUMMARY_FUNNY</span> <span class="o">=</span> <span class="s2">&quot;csv/output/Report_Shorts_with_summary_gregor_funny.csv&quot;</span>
+    <span class="n">CHATBOT_EXPERIMENT_RESPONSE_FUNNY</span> <span class="o">=</span> <span class="s2">&quot;csv/output/Report_Shorts_with_summary_gregor_funny_experiment_results.csv&quot;</span>
+    
+    <span class="c1"># load shorts information</span>
+    <span class="n">df_shorts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">YOUTUBE_SHORTS_WITH_CHATBOT_SUMMARY_FUNNY</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Apply the function to each row</span>
+    <span class="n">df_shorts</span><span class="p">[</span><span class="s1">&#39;low ssc characteristics st&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_shorts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">st_funny_low_ssc_characteristics</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_shorts</span><span class="p">[</span><span class="s1">&#39;high ssc characteristics st&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_shorts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">st_funny_high_ssc_characteristics</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_shorts</span><span class="p">[</span><span class="s1">&#39;low ssc defined st&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_shorts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">st_funny_low_ssc_defined</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_shorts</span><span class="p">[</span><span class="s1">&#39;high ssc defined st&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_shorts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">st_funny_high_ssc_defined</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Process the DataFrame in batches of 10 and write to the CSV file</span>
+    <span class="n">process_in_batches</span><span class="p">(</span><span class="n">df_shorts</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">CHATBOT_EXPERIMENT_RESPONSE_FUNNY</span><span class="p">)</span>
+    
+    <span class="k">return</span>
+
+<span class="k">def</span> <span class="nf">query_st_provocation</span><span class="p">():</span>
+    <span class="c1"># input</span>
+    <span class="n">YOUTUBE_SHORTS_WITH_CHATBOT_SUMMARY_PROVOCATION</span> <span class="o">=</span> <span class="s2">&quot;csv\output\Report_Shorts_with_summary_stefan_provocation.csv&quot;</span>
+    <span class="n">CHATBOT_EXPERIMENT_RESPONSE_PROVOCATION</span> <span class="o">=</span> <span class="s2">&quot;csv\output\Report_Shorts_with_summary_stefan_provocation_experimentResults.csv&quot;</span>
+    
+    <span class="c1"># load shorts information</span>
+    <span class="n">df_shorts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">YOUTUBE_SHORTS_WITH_CHATBOT_SUMMARY_PROVOCATION</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Apply the function to each row</span>
+    <span class="n">df_shorts</span><span class="p">[</span><span class="s1">&#39;low ssc characteristics st&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_shorts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">st_provocation_low_ssc_characteristics</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_shorts</span><span class="p">[</span><span class="s1">&#39;high ssc characteristics st&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_shorts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">st_provocation_high_ssc_characteristics</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_shorts</span><span class="p">[</span><span class="s1">&#39;low ssc defined st&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_shorts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">st_provocation_low_ssc_defined</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_shorts</span><span class="p">[</span><span class="s1">&#39;high ssc defined st&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_shorts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">st_provocation_high_ssc_defined</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Process the DataFrame in batches of 10 and write to the CSV file</span>
+    <span class="n">process_in_batches</span><span class="p">(</span><span class="n">df_shorts</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">CHATBOT_EXPERIMENT_RESPONSE_PROVOCATION</span><span class="p">)</span>
+    
+    <span class="k">return</span>
+</pre></div>
+</div>
 </section>
-<section id="id8">
-<h3>Proposition 2.1<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
-<section id="aggression-provocation">
-<h4>Aggression / Provocation<a class="headerlink" href="#aggression-provocation" title="Permalink to this heading">#</a></h4>
+<section id="data-analysis">
+<h3>Data Analysis<a class="headerlink" href="#data-analysis" title="Permalink to this heading">#</a></h3>
+<p>In the following, our approaches to the analysis of the generated data (see <a class="reference internal" href="#data-collection"><span class="std std-ref">Data Collection</span></a>) is lined out by providing the scripts for analysis of two exemplary experiment simulations.</p>
+<section id="example-funny-humorous">
+<h4>Example: Funny / Humorous<a class="headerlink" href="#example-funny-humorous" title="Permalink to this heading">#</a></h4>
+<p>We extracted the JSON objects from the CSV file and calculated the median for every value category. Afterwards, matplotlib was used to generate the graphs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">RESULTS_FUNNY</span> <span class="o">=</span> <span class="s2">&quot;files_for_python_code/Report_Shorts_with_summary_gregor_funny_experiment_results_cleaned.csv&quot;</span>
+
+<span class="n">df_shorts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">RESULTS_FUNNY</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;high_ssc_characteristics&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_defined&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;high_ssc_defined&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">total_laugh_low_ssc_characteristics</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_smile_low_ssc_characteristics</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_amusement_low_ssc_characteristics</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">total_laugh_high_ssc_characteristics</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_smile_high_ssc_characteristics</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_amusement_high_ssc_characteristics</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">total_laugh_low_ssc_defined</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_smile_low_ssc_defined</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_amusement_low_ssc_defined</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">total_laugh_high_ssc_defined</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_smile_high_ssc_defined</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_amusement_high_ssc_defined</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_shorts</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;low ssc characteristics&#39;</span><span class="p">]))</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;high_ssc_characteristics&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;high ssc characteristics&#39;</span><span class="p">]))</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_defined&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;low ssc defined&#39;</span><span class="p">]))</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;high_ssc_defined&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;high ssc defined&#39;</span><span class="p">]))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">])):</span>
+    <span class="n">total_laugh_low_ssc_characteristics</span> <span class="o">+=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;smiles&quot;</span><span class="p">]</span>
+    <span class="n">total_smile_low_ssc_characteristics</span> <span class="o">+=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;laughs&quot;</span><span class="p">]</span>
+    <span class="n">total_amusement_low_ssc_characteristics</span> <span class="o">+=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;amusement_rating&quot;</span><span class="p">]</span>
+    
+    <span class="n">total_laugh_high_ssc_characteristics</span> <span class="o">+=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;high_ssc_characteristics&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;smiles&quot;</span><span class="p">]</span>
+    <span class="n">total_smile_high_ssc_characteristics</span> <span class="o">+=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;high_ssc_characteristics&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;laughs&quot;</span><span class="p">]</span>
+    <span class="n">total_amusement_high_ssc_characteristics</span> <span class="o">+=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;high_ssc_characteristics&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;amusement_rating&quot;</span><span class="p">]</span>
+    
+    <span class="n">total_laugh_low_ssc_defined</span> <span class="o">+=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_defined&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;smiles&quot;</span><span class="p">]</span>
+    <span class="n">total_smile_low_ssc_defined</span> <span class="o">+=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_defined&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;laughs&quot;</span><span class="p">]</span>
+    <span class="n">total_amusement_low_ssc_defined</span> <span class="o">+=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_defined&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;amusement_rating&quot;</span><span class="p">]</span>
+    
+    <span class="n">total_laugh_high_ssc_defined</span> <span class="o">+=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;high_ssc_defined&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;smiles&quot;</span><span class="p">]</span>
+    <span class="n">total_smile_high_ssc_defined</span> <span class="o">+=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;high_ssc_defined&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;laughs&quot;</span><span class="p">]</span>
+    <span class="n">total_amusement_high_ssc_defined</span> <span class="o">+=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;high_ssc_defined&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;amusement_rating&quot;</span><span class="p">]</span>
+
+<span class="n">avg_laugh_low_ssc_characteristics</span> <span class="o">=</span> <span class="n">total_laugh_low_ssc_characteristics</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">])</span>
+<span class="n">avg_smile_low_ssc_characteristics</span> <span class="o">=</span> <span class="n">total_smile_low_ssc_characteristics</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">])</span>
+<span class="n">avg_amusement_low_ssc_characteristics</span> <span class="o">=</span> <span class="n">total_amusement_low_ssc_characteristics</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">])</span>
+
+<span class="n">avg_laugh_high_ssc_characteristics</span> <span class="o">=</span> <span class="n">total_laugh_high_ssc_characteristics</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">])</span>
+<span class="n">avg_smile_high_ssc_characteristics</span> <span class="o">=</span> <span class="n">total_smile_high_ssc_characteristics</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">])</span>
+<span class="n">avg_amusement_high_ssc_characteristics</span> <span class="o">=</span> <span class="n">total_amusement_high_ssc_characteristics</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">])</span>
+
+<span class="n">avg_laugh_low_ssc_defined</span> <span class="o">=</span> <span class="n">total_laugh_low_ssc_defined</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">])</span>
+<span class="n">avg_smile_low_ssc_defined</span> <span class="o">=</span> <span class="n">total_smile_low_ssc_defined</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">])</span>
+<span class="n">avg_amusement_low_ssc_defined</span> <span class="o">=</span> <span class="n">total_amusement_low_ssc_defined</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">])</span>
+
+<span class="n">avg_laugh_high_ssc_defined</span> <span class="o">=</span> <span class="n">total_laugh_high_ssc_defined</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">])</span>
+<span class="n">avg_smile_high_ssc_defined</span> <span class="o">=</span> <span class="n">total_smile_high_ssc_defined</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">])</span>
+<span class="n">avg_amusement_high_ssc_defined</span> <span class="o">=</span> <span class="n">total_amusement_high_ssc_defined</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;low_ssc_characteristics&#39;</span><span class="p">])</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="n">avg_amusement_high_ssc_characteristics</span><span class="p">,</span> <span class="n">avg_laugh_high_ssc_characteristics</span><span class="p">,</span> <span class="n">avg_smile_high_ssc_characteristics</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="n">avg_amusement_low_ssc_characteristics</span><span class="p">,</span> <span class="n">avg_laugh_low_ssc_characteristics</span><span class="p">,</span> <span class="n">avg_smile_low_ssc_characteristics</span><span class="p">]</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;seagreen&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Avg. Amusement&#39;</span><span class="p">,</span> <span class="s1">&#39;Avg. Laughs&#39;</span><span class="p">,</span> <span class="s1">&#39;Avg. Smiles&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;High SSC&quot;</span><span class="p">,</span> <span class="s2">&quot;Low SSC &quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="n">avg_amusement_high_ssc_defined</span><span class="p">,</span> <span class="n">avg_laugh_high_ssc_defined</span><span class="p">,</span> <span class="n">avg_smile_high_ssc_defined</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="n">avg_amusement_low_ssc_defined</span><span class="p">,</span> <span class="n">avg_laugh_low_ssc_defined</span><span class="p">,</span> <span class="n">avg_smile_low_ssc_defined</span><span class="p">]</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightseagreen&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;seagreen&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Avg. Amusement&#39;</span><span class="p">,</span> <span class="s1">&#39;Avg. Laughs&#39;</span><span class="p">,</span> <span class="s1">&#39;Avg. Smiles&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;High SSC&quot;</span><span class="p">,</span> <span class="s2">&quot;Low SSC &quot;</span><span class="p">])</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6ca60ccb109c1248fcb855a6aa4bb65c2b531accf821166ade64a38f9c1e8075.png" src="_images/6ca60ccb109c1248fcb855a6aa4bb65c2b531accf821166ade64a38f9c1e8075.png" />
+<img alt="_images/b04f3d5b97031fa1bd0debfcc8418cfa4faaebea722ff51f5d7bb46ceef40dae.png" src="_images/b04f3d5b97031fa1bd0debfcc8418cfa4faaebea722ff51f5d7bb46ceef40dae.png" />
+</div>
+</div>
+</section>
+<section id="example-aggression-provocation">
+<h4>Example: Aggression / Provocation<a class="headerlink" href="#example-aggression-provocation" title="Permalink to this heading">#</a></h4>
 <p>We used regex to match the JSON, since the columns sometimes included additional text, despite our efforts in the prompt to prevent this.
 Then we used standard pandas functionality to extract the integers out of the JSON. After that matplotlib was utilized to plot the boxplots
 and calculate everything associated with it (mean, IQR, …)</p>
@@ -555,9 +773,26 @@ and calculate everything associated with it (mean, IQR, …)</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3c88bf43c8b86ff5ede03034064918fbf22b05ddfc61ccd9d73bbfe86a23d3b0.png" src="_images/3c88bf43c8b86ff5ede03034064918fbf22b05ddfc61ccd9d73bbfe86a23d3b0.png" />
+<img alt="_images/5d5413a16245219bc312f93f551381430cf77bf04bcce538c7b7de081b7b908f.png" src="_images/5d5413a16245219bc312f93f551381430cf77bf04bcce538c7b7de081b7b908f.png" />
 </div>
 </div>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="id13" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">3</a><span class="fn-bracket">]</span></span>
+<p><a class="github reference external" href="https://github.com/StayFN/MediaReactionSimulator/blob/main/DescribeYoutubeShorts.ipynb">StayFN/MediaReactionSimulator</a></p>
+</aside>
+<aside class="footnote brackets" id="id14" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">4</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://pypi.org/project/hugchat/">https://pypi.org/project/hugchat/</a></p>
+</aside>
+<aside class="footnote brackets" id="id15" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">5</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://googleapis.github.io/google-api-python-client/">https://googleapis.github.io/google-api-python-client/</a></p>
+</aside>
+<aside class="footnote brackets" id="id16" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">6</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://pypi.org/project/youtube-transcript-api/">https://pypi.org/project/youtube-transcript-api/</a></p>
+</aside>
 </section>
 </section>
 </section>
@@ -629,10 +864,11 @@ and calculate everything associated with it (mean, IQR, …)</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-1">Proposition 2.1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposition-2-2">Proposition 2.2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#used-software-packages-functions-todo-sollen-wir-das-hier-wirklich-auch-noch-beschreiben">Used Software Packages &amp; Functions (TODO sollen wir das hier wirklich auch noch beschreiben?)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#used-software-packages-functions">Used Software Packages &amp; Functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data Collection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Proposition 2.1</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aggression-provocation">Aggression / Provocation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis">Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-funny-humorous">Example: Funny / Humorous</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-aggression-provocation">Example: Aggression / Provocation</a></li>
 </ul>
 </li>
 </ul>
