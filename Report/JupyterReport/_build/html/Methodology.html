@@ -440,7 +440,7 @@ You should rate between 1 to 5 how depressed, tense, sorry, dissatisfied, and an
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Stucke &amp; Baumeister<span id="id5">[<a class="reference internal" href="Bibliography.html#id6" title="Tanja S. Stucke and Roy F. Baumeister. Ego depletion and aggressive behavior: Is the inhibition of aggression a limited resource? European Journal of Social Psychology, 36(1):1–13, 2006. doi:10.1002/ejsp.285.">SB06</a>]</span> investigate the relationship between SSC and aggressive behavior. In three experiments, they demonstrated, that individuals with high SSC, whether by resisting tempting food, concentrating on a boring film, or unrelated acts of self-regulation, tend to exhibit increased aggression when faced with subsequent challenges or insults. The Researchers measured the aggression indirectly on a 9 point scale utilizing proxies like the evaluation of the experimenter. In order to replicate those results the LLM was confronted with 47 provocative Youtube Shorts obtained with the Search Term <code class="docutils literal notranslate"><span class="pre">Provocation</span></code> and asked to rate their emotional response to the provocative content. The exact prompt (excluding the SSC definitions) was constructed like this:</p>
+<p>Stucke &amp; Baumeister <span id="id5">[<a class="reference internal" href="Bibliography.html#id6" title="Tanja S. Stucke and Roy F. Baumeister. Ego depletion and aggressive behavior: Is the inhibition of aggression a limited resource? European Journal of Social Psychology, 36(1):1–13, 2006. doi:10.1002/ejsp.285.">SB06</a>]</span> investigate the relationship between SSC and aggressive behavior. In three experiments, they demonstrated, that individuals with high SSC, whether by resisting tempting food, concentrating on a boring film, or unrelated acts of self-regulation, tend to exhibit increased aggression when faced with subsequent challenges or insults. The Researchers measured the aggression indirectly on a 9 point scale utilizing proxies like the evaluation of the experimenter. In order to replicate those results the LLM was confronted with 47 provocative Youtube Shorts obtained with the Search Term <code class="docutils literal notranslate"><span class="pre">Provocation</span></code> and asked to rate their emotional response to the provocative content. The exact prompt (excluding the SSC definitions) was constructed like this:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>You are watching a YouTube short and while you are watching the video, you try to hide your emotions to outside people. The YouTube short is described as follows:
 
 &lt;YouTube Short description of LLM&gt;
@@ -454,11 +454,25 @@ You should rate your emotional response in terms of aggression (JSON Field: &quo
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>To examine the propositions of Dillman Carpentier &amp; Mazandarani<span id="id6">[<a class="reference internal" href="Bibliography.html#id10" title="Francesca R. Dillman Carpentier and Farnosh Mazandarani. 462463C24Portrayals of Human Sexuality as Entertainment. In The Oxford Handbook of Entertainment Theory. Oxford University Press, 04 2021. URL: https://doi.org/10.1093/oxfordhb/9780190072216.013.25, arXiv:https://academic.oup.com/book/0/chapter/290543038/chapter-ag-pdf/44522647/book\_34268\_section\_290543038.ag.pdf, doi:10.1093/oxfordhb/9780190072216.013.25.">DCM21</a>]</span>, which indicate that affective responses to media entertainment such as sexual stimulation <span id="id7">[<a class="reference internal" href="Bibliography.html#id2" title="Leonard Reinecke and Adrian Meier. Media entertainment as guilty pleasure? The Oxford handbook of entertainment theory, pages 205, 2021.">RM21</a>]</span> are potentially more intense in individuals with lower levels of self-selected constriction (SSC), we initiated an ancillary study. This involved collecting 47 YouTube Shorts using the search term “sexy”. These videos, while adhering to YouTube’s Content Policy, did not feature explicit pornography, as referenced by Dillman Carpentier &amp; Mazandarani, but included content that closely borders on this category, such as nudity and movie sex scenes. To investigate the correlation between affective responses and self-control, we formulated and processed the following query through the(LLM).</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>You are watching a YouTube short and while you are watching the video, you try to hide your emotions to outside people. The YouTube short is described as follows:
+
+&lt;YouTube Short description of LLM&gt;
+
+You should rate your emotional response in terms of sexual stimulation (JSON Field: &quot;sex_stim&quot;) from 1 (very slightly/not at all) to 5 (extremely). Output the field in JSON only. Your answer must not include any further text or explanations.
+</pre></div>
+</div>
+<p>With an example response of:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;sex_stim&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 <section id="proposition-2-2">
 <span id="proposition-2-2-method"></span><h2>Proposition 2.2<a class="headerlink" href="#proposition-2-2" title="Permalink to this heading">#</a></h2>
-<p>Proposition 2.2 suggests that prioritization of short-term mood regulation versus long-term goals is affected by self-control<span id="id6">[<a class="reference internal" href="Bibliography.html#id2" title="Leonard Reinecke and Adrian Meier. Media entertainment as guilty pleasure? The Oxford handbook of entertainment theory, pages 205, 2021.">RM21</a>]</span>. Several studies are referenced in the initial paper which allow the derivation of this proposition. In the paragraphs below, the experiments are described as well as the the methods we used to reproduce the results using LLMs.</p>
-<p>Researchers <span id="id7">[<a class="reference internal" href="Bibliography.html#id3" title="Benjamin K Johnson, David R Ewoldsen, and Michael D Slater. Self-control depletion and narrative: testing a prediction of the tebots model. Media Psychology, 18(2):196–220, 2015.">JES15</a>]</span> have shown that individuals with reduced SSC experience higher levels of enjoyment to the narrative of a short-story. The authors suggest that participants with depleted SSC increase their goal-conduciveness of short-term mood regulation goals to experience higher levels of entertainment. In the experiment, participants were prepared to possess different levels of SSC before exposing them to the narrative of a short-story. Afterwards, the participants were asked to rate their experience by providing a 1-5 rating for following attributes: enjoyment, fun, moving, impression, suspense, transportation, and identification. To replicate this experiment, we collected 100 YouTube Shorts by employing the search term <code class="docutils literal notranslate"><span class="pre">english</span> <span class="pre">short</span> <span class="pre">story</span></code>. Following the methodology described in <a class="reference internal" href="Introduction.html#methodological-approach"><span class="std std-ref">Methodological Approach</span></a>, the LLM was prepared to represent an individual with varying levels of SSC and tasked with generating the ratings as follows:</p>
+<p>Proposition 2.2 suggests that prioritization of short-term mood regulation versus long-term goals is affected by self-control<span id="id8">[<a class="reference internal" href="Bibliography.html#id2" title="Leonard Reinecke and Adrian Meier. Media entertainment as guilty pleasure? The Oxford handbook of entertainment theory, pages 205, 2021.">RM21</a>]</span>. Several studies are referenced in the initial paper which allow the derivation of this proposition. In the paragraphs below, the experiments are described as well as the the methods we used to reproduce the results using LLMs.</p>
+<p>Researchers <span id="id9">[<a class="reference internal" href="Bibliography.html#id3" title="Benjamin K Johnson, David R Ewoldsen, and Michael D Slater. Self-control depletion and narrative: testing a prediction of the tebots model. Media Psychology, 18(2):196–220, 2015.">JES15</a>]</span> have shown that individuals with reduced SSC experience higher levels of enjoyment to the narrative of a short-story. The authors suggest that participants with depleted SSC increase their goal-conduciveness of short-term mood regulation goals to experience higher levels of entertainment. In the experiment, participants were prepared to possess different levels of SSC before exposing them to the narrative of a short-story. Afterwards, the participants were asked to rate their experience by providing a 1-5 rating for following attributes: enjoyment, fun, moving, impression, suspense, transportation, and identification. To replicate this experiment, we collected 100 YouTube Shorts by employing the search term <code class="docutils literal notranslate"><span class="pre">english</span> <span class="pre">short</span> <span class="pre">story</span></code>. Following the methodology described in <a class="reference internal" href="Introduction.html#methodological-approach"><span class="std std-ref">Methodological Approach</span></a>, the LLM was prepared to represent an individual with varying levels of SSC and tasked with generating the ratings as follows:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>You are watching a youtube short. The YouTube short is described as follows:
 
 &lt;YouTube Short description of LLM&gt;
@@ -467,14 +481,29 @@ You should rate between 1 (very slightly/not at all) to 5 (extremely) how much e
 </pre></div>
 </div>
 <p>Below, an exemplary JSON output is illustrated:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;enjoyment&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="s2">&quot;fun&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="s2">&quot;moving&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-    <span class="s2">&quot;impression&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s2">&quot;suspense&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s2">&quot;transportation&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="s2">&quot;identification&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;enjoyment&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;fun&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;moving&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;impression&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;suspense&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;transportation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;identification&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In a study conducted by Tamborini et al. (2017) as cited in <span id="id10">[<a class="reference internal" href="Bibliography.html#id2" title="Leonard Reinecke and Adrian Meier. Media entertainment as guilty pleasure? The Oxford handbook of entertainment theory, pages 205, 2021.">RM21</a>]</span>, participants were presented with a video clip that incorporated either tendentious (sexist) or nontendentious humor. The experiment revealed that participants who had their self-control capacity diminished through a preceding task exhibited greater levels of enjoyment in response to the tendentious humor, compared to those whose self-control was not depleted. This outcome indicates that while both categories of participants recognized the socially inappropriate nature of tendentious humor, only those with intact self-control effectively moderated their emotional response, leading to a reduced enjoyment of the tendentious content. To replicate these findings, we collected 85 Youtube Shorts with the search term <code class="docutils literal notranslate"><span class="pre">sexist</span> <span class="pre">joke</span></code>.
+Since we didn’t have access to the original study by Tamborini et al. we decided to assess the enjoyment of the humor on a Likert scale ranging from 1 to 5. Similarly, to evaluate the perceived appropriateness of the humor, we employed an identical Likert scale, also ranging from 1 to 5. The Prompt used and JSON returned were constructed like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>You are watching a youtube short. The YouTube short is described as follows:
+
+&lt;YouTube Short description of LLM&gt;
+
+You should rate your emotional response in terms of level of enjoyment of the humor displayed (JSON Field: &quot;enjoyment&quot;) from 1 (not at all) to 5 (extremely) and in terms of how appropriate you evaluate the humor on the same 1-5 scale (JSON Field: appropriate). Output the field in JSON only. Your answer must not include any further text or explanations.
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;enjoyment&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;appropriate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -483,8 +512,8 @@ You should rate between 1 (very slightly/not at all) to 5 (extremely) how much e
 <h2>Used Software Packages &amp; Functions<a class="headerlink" href="#used-software-packages-functions" title="Permalink to this heading">#</a></h2>
 <p>This chapter gives insight into the code that was used to collect the datasets and to analyze the data. The following code is an excerpt of the total code that was produced and provides an exemplary insight into the logic of the simulation.</p>
 <section id="data-collection">
-<span id="id8"></span><h3>Data Collection<a class="headerlink" href="#data-collection" title="Permalink to this heading">#</a></h3>
-<p>For extracting the YouTube Shorts, a script was created that queries the YouTube API. Since this script is very large, it is not included into this paper. However, it can be found in our repository<a class="footnote-reference brackets" href="#id13" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. Our main dependencies used were <code class="docutils literal notranslate"><span class="pre">hugchat</span></code><a class="footnote-reference brackets" href="#id14" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, <code class="docutils literal notranslate"><span class="pre">google-api-python-client</span></code><a class="footnote-reference brackets" href="#id15" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>, and <code class="docutils literal notranslate"><span class="pre">youtube-transcript-api</span></code><a class="footnote-reference brackets" href="#id16" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.</p>
+<span id="id11"></span><h3>Data Collection<a class="headerlink" href="#data-collection" title="Permalink to this heading">#</a></h3>
+<p>For extracting the YouTube Shorts, a script was created that queries the YouTube API. Since this script is very large, it is not included into this paper. However, it can be found in our repository<a class="footnote-reference brackets" href="#id16" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. Our main dependencies used were <code class="docutils literal notranslate"><span class="pre">hugchat</span></code><a class="footnote-reference brackets" href="#id17" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, <code class="docutils literal notranslate"><span class="pre">google-api-python-client</span></code><a class="footnote-reference brackets" href="#id18" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>, and <code class="docutils literal notranslate"><span class="pre">youtube-transcript-api</span></code><a class="footnote-reference brackets" href="#id19" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.</p>
 <p>For simulating the experiments, the code below was used. Functions like <code class="docutils literal notranslate"><span class="pre">st_provocation_low_ssc_characteristics</span></code> and <code class="docutils literal notranslate"><span class="pre">st_funny_low_ssc_characteristics</span></code> returned the promt text described in <a class="reference internal" href="#proposition-2-1-method"><span class="std std-ref">Proposition 2.1</span></a> and <a class="reference internal" href="#proposition-2-2-method"><span class="std std-ref">Proposition 2.2</span></a>. By calling the functions <code class="docutils literal notranslate"><span class="pre">query_st_funny</span></code> and <code class="docutils literal notranslate"><span class="pre">query_st_provocation</span></code>, the data collection process is triggered which queries <em>HuggingChat</em> for every short in batches of 10.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">hugchat</span> <span class="kn">import</span> <span class="n">hugchat</span>
@@ -698,8 +727,8 @@ You should rate between 1 (very slightly/not at all) to 5 (extremely) how much e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6ca60ccb109c1248fcb855a6aa4bb65c2b531accf821166ade64a38f9c1e8075.png" src="_images/6ca60ccb109c1248fcb855a6aa4bb65c2b531accf821166ade64a38f9c1e8075.png" />
-<img alt="_images/b04f3d5b97031fa1bd0debfcc8418cfa4faaebea722ff51f5d7bb46ceef40dae.png" src="_images/b04f3d5b97031fa1bd0debfcc8418cfa4faaebea722ff51f5d7bb46ceef40dae.png" />
+<img alt="_images/b91438f96a5b57eea489126df40f787ff49ed83f2d46bad378f79bf7b7c80189.png" src="_images/b91438f96a5b57eea489126df40f787ff49ed83f2d46bad378f79bf7b7c80189.png" />
+<img alt="_images/9bd3ea0eaa7092d00649dd7a75897911b6b798893abb9b2dfee766dd8a85f859.png" src="_images/9bd3ea0eaa7092d00649dd7a75897911b6b798893abb9b2dfee766dd8a85f859.png" />
 </div>
 </div>
 </section>
@@ -773,24 +802,24 @@ and calculate everything associated with it (mean, IQR, …)</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5d5413a16245219bc312f93f551381430cf77bf04bcce538c7b7de081b7b908f.png" src="_images/5d5413a16245219bc312f93f551381430cf77bf04bcce538c7b7de081b7b908f.png" />
+<img alt="_images/3c88bf43c8b86ff5ede03034064918fbf22b05ddfc61ccd9d73bbfe86a23d3b0.png" src="_images/3c88bf43c8b86ff5ede03034064918fbf22b05ddfc61ccd9d73bbfe86a23d3b0.png" />
 </div>
 </div>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="id13" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">3</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id16" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">3</a><span class="fn-bracket">]</span></span>
 <p><a class="github reference external" href="https://github.com/StayFN/MediaReactionSimulator/blob/main/DescribeYoutubeShorts.ipynb">StayFN/MediaReactionSimulator</a></p>
 </aside>
-<aside class="footnote brackets" id="id14" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">4</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id17" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">4</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://pypi.org/project/hugchat/">https://pypi.org/project/hugchat/</a></p>
 </aside>
-<aside class="footnote brackets" id="id15" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">5</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id18" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">5</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://googleapis.github.io/google-api-python-client/">https://googleapis.github.io/google-api-python-client/</a></p>
 </aside>
-<aside class="footnote brackets" id="id16" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">6</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id19" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">6</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://pypi.org/project/youtube-transcript-api/">https://pypi.org/project/youtube-transcript-api/</a></p>
 </aside>
 </section>
