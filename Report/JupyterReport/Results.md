@@ -56,14 +56,24 @@ Gruesome Videos (SSC Defined)
 
 In addition, the results of the two experimental simulations indicate that providing the LLM with descriptions of high or low SSC individuals yields more pronounced outcomes. Specifically, the first simulation (see Figure [](gruesome-ssc-characteristics)) revealed that individuals with high SSC experienced an average reduction of 78.22% in emotional intensity compared to those with low SSC, while the second simulation (see Figure [](gruesome-ssc-defined)) showed a decrease of 69.41%.
 
-Furthermore, we replicated the results by Stucke & Baumeister{cite}`stuckeEgoDepletionAggressive2006`, which investigate the relationship between self-regulation and aggressive behavior. The Figure showcases the results of exposing the LLM to provocative videos. While the main takeaway from the paper was replicated `Individuals with lower SSC exhibit more aggressive reactions to provocation`, it is clearly visible that the LLM almost always chooses the lowest option for high SSC individuals, contradicting the observed diversity in real-world experiments{cite}`stuckeEgoDepletionAggressive2006`. While not as extreme, this trend can also be observed with low SSC individuals. The median is 2 for the prompts where we assigned the LLM the characteristics of a Low SSC Individual and 3 for where we defined the LLM as a Low SSC Individual. Compared with the results for high SSC individuals with a median of 1, this is a significant difference, especially when factoring in that only 3 values deviated from the median for high SSC individuals.
+Furthermore, we replicated the results by Stucke & Baumeister {cite}`stuckeEgoDepletionAggressive2006`, which investigate the relationship between self-regulation and aggressive behavior. The Figure showcases the results of exposing the LLM to provocative videos. While the main takeaway from the paper was replicated `Individuals with lower SSC exhibit more aggressive reactions to provocation`, it is clearly visible that the LLM almost always chooses the lowest option for high SSC individuals, contradicting the observed diversity in real-world experiments {cite}`stuckeEgoDepletionAggressive2006`. While not as extreme, this trend can also be observed with low SSC individuals. The median is 2 for the prompts where we assigned the LLM the characteristics of a Low SSC Individual and 3 for where we defined the LLM as a Low SSC Individual. Compared with the results for high SSC individuals with a median of 1, this is a significant difference, especially when factoring in that only 3 values deviated from the median for high SSC individuals.
 
+```{margin}
+```{note}
+Notched boxplots incorporate a "notch" around the median to visually indicate the confidence interval of the median. These notches are useful for assessing statistical significance, with non-overlapping notches between two boxes suggesting a significant difference in their medians. The width of the notch is typically proportional to the interquartile range and inversely proportional to the square root of the sample size, using a common formula of ±1.58 × IQR/√n.
 
-```{figure} ./images/aggression_boxplot.png
+Occasionally, this can result in 'flipped' notches, where the lower end of the notch is above the first quartile, or the upper end is below the third quartile, indicating low confidence in the median estimate. While unusual in appearance, these flipped notches provide important information about the uncertainty in the median's estimation.[^1]
+```
+
+The final paper we replicated connected to proposition 2.1 by Reinecke & Maier {cite}`reinecke2021media` was by Dillman Carpentier & Mazandarani {cite}`Sexy`
+We could clearly confirm the statement made by Reinecke & Maier {cite}`reinecke2021media` that "high SSC individuals are better able to downregulate their emotional reactions, such as [...] or sexual stimulation". In Figure [](sex_stim) it can be observed that low SSC individuals experience significantly higher sexual stimulation when confronted with sexual content compared to high SSC individuals. For the high SSC individuals not a single of the 47 Shorts resulted in a value other than the lowest available one. Additionally, a significant difference can also be observed between the group where characteristics of a low SSC individual were supplied with the prompt compared to the group where we just defined the LLM to be a low SSC individual. The defined group experienced significantly higher stimulation as can be seen in [](sex_stim).
+
+```{figure} ./images/sex_stim.png
 ---
-name: aggressive_boxplot
+name: sex_stim
 ---
-Aggressive Reactions to Provocation
+Affectionate Reaction in Terms of Sexual Stimulation 
+
 ```
 
 (proposition-2-2-result)=
@@ -90,3 +100,32 @@ Short-Story Videos (SSC Defined)
 The findings from both simulation runs contradict the original research by {cite}`schmeichel2007attention`, which suggests that individuals with high SSC tend to experience less intense emotions compared to those with low SSC. Instead, our simulations yielded that low SSC individuals experience weaker emotions, with the first run (see Figure [](short-story-ssc-characteristics)) showing an average reduction of 5.9% in emotional intensity compared to high SSC individuals, while the second run (see Figure [](short-story-ssc-defined)) showed a larger discrepancy of 21.53%. Notably, these patterns were reversed when examining the simulation runs for [](proposition-2-1-result).
 
 
+In our last experiment we were able to partly replicate the results of Tamborini et al. (2017) as cited in {cite}`reinecke2021media`. As can be seen in Figure [](sexist_jokes ) The enjoyment of sexist jokes was higher when the LLM was assigned a role with low SSC or similarly only with characteristics of a low SSC, both having a median enjoyment of 4 out of 5, while both high SSC groups experienced lower levels of enjoyment with a median of 3. We could not replicate the hypotheses, that low SSC individuals experience sexist jokes as more appropriate compared to high SSC individuals, our findings show the opposite. Low SSC individuals experienced the jokes as less appropriate with a median of 3 for the characteristics group and 2 for the defined group. High SSC individuals had a median of 3 for both groups, this effect gets more distinct when taking the mean into account (2,79 vs. 3.34 and 2.08 vs. 3.39 respectively).
+
+```{figure} ./images/sexist_jokes.png
+---
+name: sexist_jokes
+---
+Reaction to Sexist Jokes
+```
+
+It's important to note that upon examining the boxplots, the distributions observed do not align with what one might typically expect from real-world data. To further substantiate these findings, we conducted significance tests, calculating the p-value for each group.
+
+```{code-cell} python
+from scipy import stats
+import pandas as pd
+df2 = pd.read_csv("files_for_python_code\df_sexist_jokes.csv")
+
+column_pairs = [
+    ('Low SSC Char. Enjoym.', 'High SSC Char. Enjoym.'),
+    ('Low SSC Char. Appr.', 'High SSC Char. Appr.'),
+    ('Low SSC Def. Enjoym.', 'High SSC Def. Enjoym.'),
+    ('Low SSC Def. Appr.', 'High SSC Def. Appr.')
+]
+
+for col1, col2 in column_pairs:
+    t_stat, p_value = stats.ttest_ind(df2[col1].dropna(), df2[col2].dropna())
+    print(f'The p-value for {col1} and {col2} is {p_value:.30f}')
+```
+
+[^1]: <https://stackoverflow.com/questions/26291082/weird-behavior-of-matplotlibs-boxplot-when-using-the-notch-shape>
