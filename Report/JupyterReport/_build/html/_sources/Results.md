@@ -56,7 +56,15 @@ Gruesome Videos (SSC Defined)
 
 In addition, the results of the two experimental simulations indicate that providing the LLM with descriptions of high or low SSC individuals yields more pronounced outcomes. Specifically, the first simulation (see Figure [](gruesome-ssc-characteristics)) revealed that individuals with high SSC experienced an average reduction of 78.22% in emotional intensity compared to those with low SSC, while the second simulation (see Figure [](gruesome-ssc-defined)) showed a decrease of 69.41%.
 
-Furthermore, we replicated the results by Stucke & Baumeister {cite}`stuckeEgoDepletionAggressive2006`, which investigate the relationship between self-regulation and aggressive behavior. The Figure showcases the results of exposing the LLM to provocative videos. While the main takeaway from the paper was replicated `Individuals with lower SSC exhibit more aggressive reactions to provocation`, it is clearly visible that the LLM almost always chooses the lowest option for high SSC individuals, contradicting the observed diversity in real-world experiments {cite}`stuckeEgoDepletionAggressive2006`. While not as extreme, this trend can also be observed with low SSC individuals. The median is 2 for the prompts where we assigned the LLM the characteristics of a Low SSC Individual and 3 for where we defined the LLM as a Low SSC Individual. Compared with the results for high SSC individuals with a median of 1, this is a significant difference, especially when factoring in that only 3 values deviated from the median for high SSC individuals.
+Furthermore, we replicated the results by Stucke & Baumeister {cite}`stuckeEgoDepletionAggressive2006`, which investigate the relationship between self-regulation and aggressive behavior. The Figure showcases the results of exposing the LLM to provocative videos. While the main takeaway from the paper was replicated "Individuals with lower SSC exhibit more aggressive reactions to provocation", it is clearly visible that the LLM almost always chooses the lowest option for high SSC individuals, contradicting the observed diversity in real-world experiments {cite}`stuckeEgoDepletionAggressive2006`. While not as extreme, this trend can also be observed with low SSC individuals. The median is 2 for the prompts where we assigned the LLM the characteristics of a Low SSC Individual and 3 for where we defined the LLM as a Low SSC Individual. Compared with the results for high SSC individuals with a median of 1, this is a significant difference, especially when factoring in that only 3 values deviated from the median for high SSC individuals.
+
+```{figure} ./images/aggression_boxplot.png
+---
+name: Agression 
+---
+Agression in Response to Provocation
+```
+
 
 ```{margin}
 ```{note}
@@ -66,7 +74,7 @@ Occasionally, this can result in 'flipped' notches, where the lower end of the n
 ```
 
 The final paper we replicated connected to proposition 2.1 by Reinecke & Maier {cite}`reinecke2021media` was by Dillman Carpentier & Mazandarani {cite}`Sexy`
-We could clearly confirm the statement made by Reinecke & Maier {cite}`reinecke2021media` that "high SSC individuals are better able to downregulate their emotional reactions, such as [...] or sexual stimulation". In Figure [](sex_stim) it can be observed that low SSC individuals experience significantly higher sexual stimulation when confronted with sexual content compared to high SSC individuals. For the High SSC individuals not a single of the 47 Shorts resulted in a value other than the lowest available one. Additionally a significant difference can also be observed between the group where characteristics of a low SSC individual were supplied with the prompt compared to the group where we just defined the LLM to be a low SSC individual. The defined group experienced significantly higher stimulation as can be seen in [](sex_stim).
+We could clearly confirm the statement made by Reinecke & Maier {cite}`reinecke2021media` that "high SSC individuals are better able to downregulate their emotional reactions, such as [...] or sexual stimulation". In Figure [](sex_stim) it can be observed that low SSC individuals experience significantly higher sexual stimulation when confronted with sexual content compared to high SSC individuals. For the high SSC individuals not a single of the 47 Shorts resulted in a value other than the lowest available one. Additionally, a significant difference can also be observed between the group where characteristics of a low SSC individual were supplied with the prompt compared to the group where we just defined the LLM to be a low SSC individual. The defined group experienced significantly higher stimulation as can be seen in [](sex_stim).
 
 ```{figure} ./images/sex_stim.png
 ---
@@ -75,7 +83,6 @@ name: sex_stim
 Affectionate Reaction in Terms of Sexual Stimulation 
 
 ```
-
 
 (proposition-2-2-result)=
 ## Proposition 2.2
