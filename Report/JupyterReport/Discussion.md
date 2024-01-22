@@ -6,3 +6,5 @@ But for a better setup we should have had 4 Groups (2 LLMs and 2 )
 
 - LLM won't contradict current scientific consensus, since it is trained on it, so any other result would have been highly unexpected
 
+- Let out the "Try to hide your emotions" since it affected High SSC answers extremly while low ssc not so much - Test again without if it chagnes significantly. Evtl: in experiments in the beginning we saw without that the results would be heavily skewed towards the top of the scale need to find a 
+more balanced propmt? 

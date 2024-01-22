@@ -74,6 +74,23 @@ With an example response of:
 }
 ```
 
+To examine the propositions of Dillman Carpentier & Mazandarani{cite}`Sexy`, which indicate that affective responses to media entertainment such as sexual stimulation{cite}`reinecke2021media` are potentially more intense in individuals with lower levels of self-selected constriction (SSC), we initiated an ancillary study. This involved collecting 47 YouTube Shorts using the search term "sexy". These videos, while adhering to YouTube's Content Policy, did not feature explicit pornography, as referenced by Dillman Carpentier & Mazandarani, but included content that closely borders on this category, such as nudity and movie sex scenes. To investigate the correlation between affective responses and self-control, we formulated and processed the following query through the(LLM).
+```text
+You are watching a YouTube short and while you are watching the video, you try to hide your emotions to outside people. The YouTube short is described as follows:
+
+<YouTube Short description of LLM>
+
+You should rate your emotional response in terms of sexual stimulation (JSON Field: "sex_stim") from 1 (very slightly/not at all) to 5 (extremely). Output the field in JSON only. Your answer must not include any further text or explanations.
+```
+With an example response of:
+```json
+{
+    "sex_stim": 2,
+}
+```
+
+
+
 (proposition-2-2-method)=
 ## Proposition 2.2
 
@@ -90,7 +107,7 @@ You should rate between 1 (very slightly/not at all) to 5 (extremely) how much e
 ```
 
 Below, an exemplary JSON output is illustrated:
-```
+```json
 {
     "enjoyment": 3,
     "fun": 2,
@@ -99,6 +116,23 @@ Below, an exemplary JSON output is illustrated:
     "suspense": 1,
     "transportation": 3,
     "identification": 2
+}
+```
+
+In a study conducted by Tamborini et al. (2017) zitiert nach {cite}`reinecke2021media`, participants were presented with a video clip that incorporated either tendentious (sexist) or nontendentious humor. The experiment revealed that participants who had their self-control capacity diminished through a preceding task exhibited greater levels of enjoyment in response to the tendentious humor, compared to those whose self-control was not depleted. This outcome indicates that while both categories of participants recognized the socially inappropriate nature of tendentious humor, only those with intact self-control effectively moderated their emotional response, leading to a reduced enjoyment of the tendentious content.
+Since we didn't have access to the original study by Tamborini et al. we decided to assess the enjoyment of the humor on a Likert scale ranging from 1 to 5. Similarly, to evaluate the perceived appropriateness of the humor, we employed an identical Likert scale, also ranging from 1 to 5. The Prompt used and JSON returned were constructed like this:
+```text
+You are watching a youtube short. The YouTube short is described as follows:
+
+<YouTube Short description of LLM>
+
+You should rate your emotional response in terms of level of enjoyment of the humor displayed (JSON Field: "enjoyment") from 1 (not at all) to 5 (extremely) and in terms of how appropriate you evaluate the humor on the same 1-5 scale (JSON Field: appropriate). Output the field in JSON only. Your answer must not include any further text or explanations.
+```
+
+```json
+{
+    "enjoyment": 2,
+    "appropriate": 4
 }
 ```
 
