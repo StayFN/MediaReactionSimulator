@@ -1,10 +1,35 @@
 # Discussion and Reflection
 
-## Lack of Control Group
+In this concluding section, we present a discussion of our results, address the limitations of our study, and outline potential future research.
+
+## Discussion of Results
+
+By replicating the experiments cited by Reinecke and Meier {cite}`reinecke2021media` that led to the development of propositions 2.1 and 2.2 in the AMUSE model, we employed LLMs to evaluate their validity. Our results revealed that proposition 2.1 could be accurately reproduced, albeit with some variations, whereas proposition 2.2 proved challenging to replicate through simulation.
+
+Using LLMs, we confirmed that individuals with high SSC are better able to regulate their emotional responses to external stimuli than those with low SSC. Our simulations for proposition 2.1 consistently supported this finding (see [](proposition-2-1-result)). However, we noticed some disparities between our simulated experiments and the real-world studies. Specifically, the LLMs indicated that high SSC individuals experience reduced intensity of positive or negative emotions than low SSC individuals, whereas in reality, they are only more capable of regulating their emotions.
+
+Despite our efforts, we encountered difficulties in replicating the results for proposition 2.2 as described by Reinecke and Meier {cite}`reinecke2021media`. Our simulated experiments yielded outcomes that were largely incongruent with the actual experimental results (see [](proposition-2-2-result)), which contradicted the underlying experiments that yielded proposition 2.2. Furthermore, we noticed an interesting phenomenon where the emotional intensity reported by participants in our simulation was more pronounced when we described the characteristics of high or low SSC individuals, compared to when we simply classified them as having high or low SSC. However, this trend reversed itself in our simulations for proposition 2.2. We were unable to explain why our simulations failed to mirror the real-world experiments for proposition 2.2, but suspect that adjusting the prompt could offer a solution. Nonetheless, such adjustments should be made carefully, ensuring that the prompt still represents a practical representation of the real-world experiments rather than artificially generating the anticipated outcomes.
+
+*Our findings demonstrate the potential of LLMs to simulate human emotional responses to media content by leveraging appraisal theory within our proposed framework*. While our approach showed promise, with successful replication of the expected results in half of the tested propositions, there is still room for improvement. To enhance the accuracy and robustness of our simulations, we recommend refining our framework through careful adjustments to the prompts, LLMs, and input variables. By optimizing these elements, the quality of the results can be increased to strengthen the effectiveness of our methodology.
+
+## Limitations
+
+In the subsequent discussion, we examine the constraints inherent in our research design. Several limitations became apparent, including the absence of a control group, mismatches between the LLM and prevailing scientific opinion, the impact of emotional concealment directives, and shortcomings in the generation of video descriptions.
+
+<!--### Lack of Control Group-->
 The study notably lacked a real human control group, a critical element for comparing against the simulated LLM responses. This absence hinders our ability to gauge how actual individuals might react in the same setup. Although the LLM replicated the original study's concepts and topics, the lack of real participant data as a baseline significantly limits the study's external validity. Future studies should consider incorporating four groups – two with LLM simulations and two with real human participants – to provide a more robust and comparative framework.
 
-## LLM's Alignment with Scientific Consensus
+<!--### LLM's Alignment with Scientific Consensus-->
 A key limitation of the LLM is its inherent alignment with current scientific consensus, stemming from its training on existing knowledge. This characteristic likely skews the study's outcomes and limits its capacity to explore unconventional or novel perspectives. Recognizing this limitation is crucial in interpreting the results and in the design of future studies.
 
-## Influence of Emotional Concealment Directive
+<!--### Influence of Emotional Concealment Directive-->
 The directive for participants to "try to hide your emotions" had a significant impact, especially on responses from high SSC personas, compared to those from low SSC personas. This discrepancy suggests that the instruction might have introduced a variable that disproportionately affected one group. Reconducting the experiment without this directive could provide a clearer understanding of its influence. Preliminary experiments indicated that omitting this directive might skew results towards the higher end of the scale, suggesting a need for a more balanced prompt that minimizes undue influence on participant responses.
+
+<!--### Generation of Video Descriptions-->
+The extraction of video transcripts presents additional limitations to our study. As detailed in our [](methodological-approach) and [](method) sections, we exclusively considered videos that offered transcript functionality. Consequently, videos without transcripts due to disablement or lack of dialogue were excluded from our analysis. This selection bias may impact our findings, as certain videos depicting graphic content, such as those illustrating Schmeichel's study on gruesome scenes in a slaughterhouse {cite}`schmeichel2007attention`, may not have accompanying commentary and thus remain untranscribed. Furthermore, YouTube's automated transcription generation occasionally yields imperfect results, potentially introducing errors into our dataset.
+
+The creation of video descriptions employing LLMs involves several restrictions. Due to the inability to directly process video files using LLMs during our study, we had to serve the LLM with as much relevant information as possible in the form of text. This leads to a loss of information, as the visual aspects of the video could not be automatically conveyed to the LLM. For certain videos, such as comedic skits, a graphical description can be crucial to understand the plot twist or joke. These instances were not excluded from our dataset, despite their potential impact on the accuracy of our analysis, given the substantial size of the collected data.
+
+## Future Work
+
+To further validate our framework, future studies could replicate our simulated experiments with human participants, allowing for a direct comparison of the results and identification of any discrepancies between the simulated and real-world outcomes. Additionally, to ensure the LLM's results are not limited by the current scientific consensus, a variant of the LLM could be trained without incorporating SSC-related data. Alternatively, an AI system could be developed to directly process video and audio signals, producing an emotional response to the input; however, this approach would require significant resources. Lastly, enhancing the quality of the video descriptions could be achieved by improving the automated generation process or by manually crafting descriptions for each video.
