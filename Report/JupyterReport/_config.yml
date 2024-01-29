@@ -4,6 +4,7 @@
 title: "The Role of Self-Control in Media Consumption: Insights from LLM Persona Simulations"
 author: Stefan Stingl and Gregor Debus
 logo: logo-universitaet-mannheim.svg
+copyright: "2024"
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html

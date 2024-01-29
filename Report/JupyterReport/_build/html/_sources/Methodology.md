@@ -58,7 +58,7 @@ An exemplary JSON output is illustrated below:
 ```
 
 
-Stucke & Baumeister {cite}`stuckeEgoDepletionAggressive2006` investigate the relationship between SSC and aggressive behavior. In three experiments, they demonstrated, that individuals with high SSC, whether by resisting tempting food, concentrating on a boring film, or unrelated acts of self-regulation, tend to exhibit increased aggression when faced with subsequent challenges or insults. The Researchers measured the aggression indirectly on a 9 point scale utilizing proxies like the evaluation of the experimenter. In order to replicate those results the LLM was confronted with 47 provocative Youtube Shorts obtained with the Search Term `Provocation` and asked to rate their emotional response to the provocative content. The exact prompt (excluding the SSC definitions) was constructed like this:
+Stucke & Baumeister {cite}`stuckeEgoDepletionAggressive2006` investigate the relationship between SSC and aggressive behavior. In three experiments, they demonstrated, that individuals with high SSC, whether by resisting tempting food, concentrating on a boring film, or unrelated acts of self-regulation, tend to exhibit increased aggression when faced with subsequent challenges or insults. The researchers measured the aggression indirectly on a 9 point scale utilizing proxies like the evaluation of the experimenter. In order to replicate those results the LLM was confronted with 47 provocative Youtube Shorts obtained with the search term `Provocation` and asked to rate their emotional response to the provocative content. The exact prompt (excluding the SSC definitions) was constructed like this:
 
 ```text
 You are watching a YouTube short and while you are watching the video, you try to hide your emotions to outside people. The YouTube short is described as follows:
@@ -74,7 +74,7 @@ With an example response of:
 }
 ```
 
-To examine the propositions of Dillman Carpentier & Mazandarani{cite}`Sexy`, which indicate that affective responses to media entertainment such as sexual stimulation {cite}`reinecke2021media` are potentially more intense in individuals with lower levels of self-selected constriction (SSC), we initiated an ancillary study. This involved collecting 47 YouTube Shorts using the search term "sexy". These videos, while adhering to YouTube's Content Policy, did not feature explicit pornography, as referenced by Dillman Carpentier & Mazandarani, but included content that closely borders on this category, such as nudity and movie sex scenes. To investigate the correlation between affective responses and self-control, we formulated and processed the following query through the(LLM).
+To examine the propositions of Dillman Carpentier & Mazandarani{cite}`Sexy`, which indicate that affective responses to media entertainment such as sexual stimulation {cite}`reinecke2021media` are potentially more intense in individuals with lower levels of SSC, we initiated an ancillary study. This involved collecting 47 YouTube Shorts using the search term "sexy". These videos, while adhering to YouTube's Content Policy, did not feature explicit pornography, as referenced by Dillman Carpentier & Mazandarani, but included content that closely borders on this category, such as nudity and movie sex scenes. To investigate the correlation between affective responses and self-control, we formulated and processed the following query through the(LLM).
 ```text
 You are watching a YouTube short and while you are watching the video, you try to hide your emotions to outside people. The YouTube short is described as follows:
 
@@ -120,7 +120,7 @@ Below, an exemplary JSON output is illustrated:
 ```
 
 In a study conducted by Tamborini et al. (2017) as cited in {cite}`reinecke2021media`, participants were presented with a video clip that incorporated either tendentious (sexist) or nontendentious humor. The experiment revealed that participants who had their self-control capacity diminished through a preceding task exhibited greater levels of enjoyment in response to the tendentious humor, compared to those whose self-control was not depleted. This outcome indicates that while both categories of participants recognized the socially inappropriate nature of tendentious humor, only those with intact self-control effectively moderated their emotional response, leading to a reduced enjoyment of the tendentious content. To replicate these findings, we collected 85 Youtube Shorts with the search term `sexist joke`. 
-Since we didn't have access to the original study by Tamborini et al. we decided to assess the enjoyment of the humor on a Likert scale ranging from 1 to 5. Similarly, to evaluate the perceived appropriateness of the humor, we employed an identical Likert scale, also ranging from 1 to 5. The Prompt used and JSON returned were constructed like this:
+Since we didn't have access to the original study by Tamborini et al. we decided to assess the enjoyment of the humor on a Likert scale ranging from 1 to 5. Similarly, to evaluate the perceived appropriateness of the humor, we employed an identical Likert scale, also ranging from 1 to 5. The prompt used and JSON returned were constructed like this:
 ```text
 You are watching a youtube short. The YouTube short is described as follows:
 
@@ -145,7 +145,7 @@ This chapter gives insight into the code that was used to collect the datasets a
 
 For extracting the YouTube Shorts, a script was created that queries the YouTube API. Since this script is very large, it is not included into this paper. However, it can be found in our repository[^3]. Our main dependencies used were `hugchat`[^4], `google-api-python-client`[^5], and `youtube-transcript-api`[^6].
 
-For simulating the experiments, the code below was used. Functions like `st_provocation_low_ssc_characteristics` and `st_funny_low_ssc_characteristics` returned the promt text described in [](proposition-2-1-method) and [](proposition-2-2-method). By calling the functions `query_st_funny` and `query_st_provocation`, the data collection process is triggered which queries *HuggingChat* for every short in batches of 10. 
+For simulating the experiments, the code below was used. Functions like `st_provocation_low_ssc_characteristics` and `st_funny_low_ssc_characteristics` returned the promt text described in [](proposition-2-1-method) and [](proposition-2-2-method). By calling the functions `query_st_funny` and `query_st_provocation`, the data collection process is triggered which queries *HuggingChat* for every YouTube Short in batches of 10. 
 
 ```python
 import json
