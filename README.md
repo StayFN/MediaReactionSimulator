@@ -3,7 +3,7 @@
 ## Expanded Overview 🌐✨
 This repository now encompasses a specialized implementation for testing propositions from "The Oxford Handbook of Entertainment Theory" by Vorderer and Klimmt. Our pipeline, incorporating advanced scraping, metadata extraction, and feature analysis, integrates with a Large Language Model (LLM) to simulate user reactions to YouTube Shorts. This approach facilitates an in-depth exploration of media entertainment theories, particularly focusing on user control and affective responses.
 
-## Advanced Features and Implementation 🌟🔧
+## Features and Implementation 🌟🔧
 - **Topic-Based Scraping:** 🌐 Refined to target videos aligning with theoretical concepts under study.
 - **In-Depth Metadata Extraction:** 📝 Now includes viewer engagement metrics and additional relevant parameters.
 - **Feature Extraction:** 🔍
